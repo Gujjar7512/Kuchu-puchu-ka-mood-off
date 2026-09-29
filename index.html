@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Kuchu Puchu 💗</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#09050b;
+    color:white;
+    font-family:Georgia,serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   CINEMATIC OPENING
+========================= */
+
+.intro{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:
+        radial-gradient(circle at center,#3b173b 0%,#130817 45%,#050307 100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    animation:introHide 2s ease 4.2s forwards;
+}
+
+.intro-content{
+    animation:introZoom 4s ease forwards;
+}
+
+.intro-small{
+    font-size:12px;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    color:#ffb5d0;
+    margin-bottom:25px;
+    opacity:0;
+    animation:fadeIn 1s ease .5s forwards;
+}
+
+.intro h1{
+    font-size:clamp(48px,13vw,100px);
+    text-shadow:
+        0 0 15px #ff6fa4,
+        0 0 50px #ff6fa455;
+    opacity:0;
+    animation:titleIn 1.5s ease 1s forwards;
+}
+
+.intro-heart{
+    font-size:45px;
+    margin-top:25px;
+    opacity:0;
+    animation:heartPop 1s ease 2.2s forwards;
+}
+
+.intro-line{
+    width:0;
+    height:1px;
+    background:#ffb5d0;
+    margin:25px auto;
+    animation:lineGrow 1s ease 2.5s forwards;
+}
+
+.intro-note{
+    font-size:17px;
+    color:#ffdce9;
+    opacity:0;
+    animation:fadeIn 1s ease 3s forwards;
+}
+
+@keyframes fadeIn{
+    to{opacity:1}
+}
+
+@keyframes titleIn{
+    0%{
+        opacity:0;
+        transform:scale(.7);
+        letter-spacing:20px;
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+        letter-spacing:1px;
+    }
+}
+
+@keyframes heartPop{
+    0%{
+        opacity:0;
+        transform:scale(.2);
+    }
+    70%{
+        transform:scale(1.3);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes lineGrow{
+    to{width:180px}
+}
+
+@keyframes introZoom{
+    0%{transform:scale(1)}
+    100%{transform:scale(1.05)}
+}
+
+@keyframes introHide{
+    to{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 20% 20%,#ff5f9e22,transparent 30%),
+        radial-gradient(circle at 80% 70%,#a855f722,transparent 30%);
+}
+
+/* Floating hearts */
+
+.heart{
+    position:fixed;
+    bottom:-50px;
+    z-index:0;
+    font-size:20px;
+    animation:float 9s linear infinite;
+    opacity:.7;
+}
+
+.h1{left:8%;animation-delay:0s}
+.h2{left:25%;animation-delay:2s}
+.h3{left:45%;animation-delay:4s}
+.h4{left:65%;animation-delay:1s}
+.h5{left:85%;animation-delay:3s}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+    20%{opacity:.8}
+    100%{
+        transform:translateY(-110vh) rotate(30deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.card{
+    width:min(900px,100%);
+    padding:50px 25px;
+    border-radius:35px;
+    background:#ffffff0b;
+    border:1px solid #ffffff20;
+    backdrop-filter:blur(18px);
+    box-shadow:0 25px 80px #00000066;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    flex-direction:column;
+}
+
+.hero-small{
+    color:#ffb5d0;
+    letter-spacing:5px;
+    font-size:13px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.hero h2{
+    font-size:clamp(45px,12vw,95px);
+    margin-bottom:25px;
+    text-shadow:0 0 35px #ff6f9e66;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    font-size:20px;
+    line-height:1.8;
+    color:#ffe5ee;
+}
+
+.scroll{
+    margin-top:40px;
+    display:inline-block;
+    color:white;
+    text-decoration:none;
+    border:1px solid #ffffff30;
+    padding:14px 27px;
+    border-radius:30px;
+    background:#ffffff0c;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message-icon{
+    font-size:65px;
+    margin-bottom:20px;
+}
+
+.card h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.message{
+    font-size:20px;
+    line-height:1.9;
+    color:#ffe5ee;
+}
+
+.pink{
+    color:#ffabc9;
+}
+
+/* =========================
+   CHOCOLATE + ICE CREAM
+========================= */
+
+.treat-section{
+    flex-direction:column;
+}
+
+.treat-title{
+    font-size:clamp(35px,8vw,60px);
+    margin-bottom:10px;
+}
+
+.treat-subtitle{
+    color:#ffd9e6;
+    margin-bottom:35px;
+    font-size:18px;
+}
+
+.treat-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+    max-width:800px;
+    margin:auto;
+}
+
+.treat{
+    padding:35px 20px;
+    border-radius:30px;
+    background:#ffffff0b;
+    border:1px solid #ffffff20;
+    transition:.5s;
+    position:relative;
+    overflow:hidden;
+}
+
+.treat:hover{
+    transform:translateY(-10px) scale(1.02);
+    background:#ffffff15;
+}
+
+.treat-icon{
+    font-size:75px;
+    display:block;
+    margin-bottom:15px;
+    animation:bounce 2.5s ease-in-out infinite;
+}
+
+.treat:nth-child(2) .treat-icon{
+    animation-delay:.5s;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px) rotate(3deg)}
+}
+
+.treat h3{
+    font-size:27px;
+    margin-bottom:10px;
+}
+
+.treat p{
+    color:#ffe5ee;
+    line-height:1.6;
+    font-size:15px;
+}
+
+.treat-button{
+    margin-top:35px;
+    border:none;
+    padding:16px 30px;
+    border-radius:30px;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff5c91,#a855f7);
+    box-shadow:0 10px 35px #ff5c9150;
+}
+
+#surprise{
+    margin-top:20px;
+    min-height:25px;
+    color:#ffc1d7;
+    font-size:18px;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final h2{
+    font-size:clamp(40px,9vw,75px);
+}
+
+.final p{
+    max-width:650px;
+    margin:20px auto;
+    font-size:20px;
+    line-height:1.8;
+    color:#ffe5ee;
+}
+
+.signature{
+    margin-top:35px;
+    color:#ffabc9;
+    font-size:18px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .treat-grid{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .treat{
+        padding:25px 10px;
+    }
+
+    .treat-icon{
+        font-size:55px;
+    }
+
+    .treat h3{
+        font-size:21px;
+    }
+
+    .treat p{
+        font-size:13px;
+    }
+
+    .card{
+        padding:40px 18px;
+    }
+
+    .card h2{
+        font-size:32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CINEMATIC OPENING -->
+
+<div class="intro">
+
+    <div class="intro-content">
+
+        <div class="intro-small">
+            A little surprise for
+        </div>
+
+        <h1>Kuchu Puchu</h1>
+
+        <div class="intro-heart">
+            💗
+        </div>
+
+        <div class="intro-line"></div>
+
+        <div class="intro-note">
+            Because you deserve a little happiness ✨
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FLOATING HEARTS -->
+
+<div class="heart h1">💗</div>
+<div class="heart h2">💕</div>
+<div class="heart h3">💖</div>
+<div class="heart h4">🩷</div>
+<div class="heart h5">💗</div>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-small">
+        This little page is only for you
+    </div>
+
+    <h2>Kuchu Puchu 💗</h2>
+
+    <p>
+        Agar aaj tumhara mood thoda off hai...
+        to bas kuch minutes yahan rukna. 🌷
+        <br>
+        No pressure, no worries —
+        bas thodi si sweetness. 🥰
+    </p>
+
+    <a href="#message" class="scroll">
+        Let's go ↓
+    </a>
+
+</section>
+
+
+<!-- MESSAGE -->
+
+<section id="message">
+
+    <div class="card">
+
+        <div class="message-icon">
+            🥺💗
+        </div>
+
+        <h2>Ek baat yaad rakhna...</h2>
+
+        <p class="message">
+
+            Tum <span class="pink">dil ki bohat achi</span> ho,
+            bohat <span class="pink">pyari</span> ho
+            aur bohat <span class="pink">cute</span> bhi ho. 🥰
+
+            <br><br>
+
+            Isliye agar kabhi mood off ho,
+            to khud par thoda sa gentle rehna.
+            Har din perfect hona zaroori nahi.
+
+            <br><br>
+
+            Bas aaj ke liye...
+            ek choti si smile kar dena. 🌸
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CHOCOLATE + ICE CREAM -->
+
+<section class="treat-section">
+
+    <div class="card">
+
+        <h2 class="treat-title">
+            Kuchu Puchu's<br>
+            Mood Kit 🍫🍦
+        </h2>
+
+        <p class="treat-subtitle">
+            Warning: Is section mein sweetness thodi zyada hai. 😌
+        </p>
+
+        <div class="treat-grid">
+
+            <!-- CHOCOLATE -->
+
+            <div class="treat">
+
+                <span class="treat-icon">🍫</span>
+
+                <h3>Chocolate</h3>
+
+                <p>
+                    Mood off?
+                    Chocolate officially approved. 🤎
+                    Ek bite happiness ka...
+                    aur thodi si smile. 🥰
+                </p>
+
+            </div>
+
+
+            <!-- ICE CREAM -->
+
+            <div class="treat">
+
+                <span class="treat-icon">🍦</span>
+
+                <h3>Ice Cream</h3>
+
+                <p>
+                    Because Kuchu Puchu ko ice cream pasand hai. 💕
+                    Ek scoop lo aur duniya ko
+                    thodi der ignore karo. 😌
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button class="treat-button" onclick="surprise()">
+            🍫🍦 Open Little Surprise 💗
+        </button>
+
+        <div id="surprise"></div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section class="final">
+
+    <div class="card">
+
+        <div style="font-size:65px;">
+            🌷💗🍫🍦✨
+        </div>
+
+        <h2>Smile Please 🥰</h2>
+
+        <p>
+
+            Kuchu Puchu,
+            aaj mood off hai to koi baat nahi.
+
+            <br><br>
+
+            Thoda chocolate,
+            thodi ice cream,
+            thoda rest...
+            aur hopefully ek choti si smile. 💗
+
+            <br><br>
+
+            Tumhari happiness important hai.
+            Always take care of that beautiful heart of yours. 🌸
+
+        </p>
+
+        <div class="signature">
+            Made with lots of care for my Kuchu Puchu 💗
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+function surprise(){
+
+    const messages = [
+        "🍫 Chocolate delivered! One virtual hug included. 🤗💗",
+        "🍦 Ice cream unlocked! Mood +10 😋",
+        "💗 Kuchu Puchu ke liye ek extra smile!",
+        "🌷 Bad mood ko thoda sa break dete hain.",
+        "🥰 Bas ek smile... please?"
+    ];
+
+    const random =
+        messages[Math.floor(Math.random()*messages.length)];
+
+    document.getElementById("surprise").innerHTML = random;
+
+}
+
+</script>
+
+</body>
+  </html>
