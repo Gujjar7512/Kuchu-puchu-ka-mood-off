@@ -18,7 +18,7 @@ html{
 }
 
 body{
-    background:#09050b;
+    background:#08050b;
     color:white;
     font-family:Georgia,serif;
     overflow-x:hidden;
@@ -32,58 +32,82 @@ body{
     position:fixed;
     inset:0;
     z-index:9999;
-    background:
-        radial-gradient(circle at center,#3b173b 0%,#130817 45%,#050307 100%);
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    animation:introHide 2s ease 4.2s forwards;
+    background:
+        radial-gradient(circle at 50% 45%,#5b214d 0%,#1b0b20 38%,#050307 85%);
+    animation:introHide 2s ease 6.5s forwards;
+}
+
+.intro:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 30%,#ff5f9e22,transparent 25%),
+        radial-gradient(circle at 80% 70%,#a855f733,transparent 30%);
+    animation:pulseBg 4s ease-in-out infinite;
 }
 
 .intro-content{
-    animation:introZoom 4s ease forwards;
+    position:relative;
+    z-index:2;
+    padding:25px;
+    animation:introZoom 6s ease forwards;
 }
 
 .intro-small{
     font-size:12px;
-    letter-spacing:6px;
+    letter-spacing:7px;
     text-transform:uppercase;
-    color:#ffb5d0;
+    color:#ffc1d8;
     margin-bottom:25px;
     opacity:0;
     animation:fadeIn 1s ease .5s forwards;
 }
 
 .intro h1{
-    font-size:clamp(48px,13vw,100px);
+    font-size:clamp(50px,14vw,105px);
     text-shadow:
         0 0 15px #ff6fa4,
-        0 0 50px #ff6fa455;
+        0 0 45px #ff6fa488,
+        0 0 100px #ff6fa444;
     opacity:0;
-    animation:titleIn 1.5s ease 1s forwards;
+    animation:titleIn 1.8s ease 1s forwards;
 }
 
 .intro-heart{
-    font-size:45px;
+    font-size:48px;
     margin-top:25px;
     opacity:0;
-    animation:heartPop 1s ease 2.2s forwards;
+    animation:heartPop 1s ease 2.6s forwards;
 }
 
 .intro-line{
     width:0;
     height:1px;
-    background:#ffb5d0;
+    background:#ffc1d8;
     margin:25px auto;
-    animation:lineGrow 1s ease 2.5s forwards;
+    box-shadow:0 0 12px #ff9fbe;
+    animation:lineGrow 1.2s ease 3s forwards;
 }
 
 .intro-note{
-    font-size:17px;
-    color:#ffdce9;
+    font-size:18px;
+    color:#ffe4ee;
     opacity:0;
-    animation:fadeIn 1s ease 3s forwards;
+    animation:fadeIn 1.2s ease 3.6s forwards;
+}
+
+.intro-from{
+    margin-top:35px;
+    color:#ffabc9;
+    font-size:14px;
+    letter-spacing:2px;
+    opacity:0;
+    animation:fadeIn 1s ease 4.5s forwards;
 }
 
 @keyframes fadeIn{
@@ -93,13 +117,15 @@ body{
 @keyframes titleIn{
     0%{
         opacity:0;
-        transform:scale(.7);
-        letter-spacing:20px;
+        transform:scale(.65);
+        letter-spacing:25px;
+        filter:blur(12px);
     }
     100%{
         opacity:1;
         transform:scale(1);
         letter-spacing:1px;
+        filter:blur(0);
     }
 }
 
@@ -109,7 +135,7 @@ body{
         transform:scale(.2);
     }
     70%{
-        transform:scale(1.3);
+        transform:scale(1.35);
     }
     100%{
         opacity:1;
@@ -118,20 +144,27 @@ body{
 }
 
 @keyframes lineGrow{
-    to{width:180px}
+    to{width:190px}
 }
 
 @keyframes introZoom{
     0%{transform:scale(1)}
-    100%{transform:scale(1.05)}
+    100%{transform:scale(1.07)}
 }
 
 @keyframes introHide{
     to{
         opacity:0;
         visibility:hidden;
+        pointer-events:none;
     }
 }
+
+@keyframes pulseBg{
+    0%,100%{opacity:.7;transform:scale(1)}
+    50%{opacity:1;transform:scale(1.08)}
+}
+
 
 /* =========================
    BACKGROUND
@@ -145,17 +178,22 @@ body:before{
     background:
         radial-gradient(circle at 20% 20%,#ff5f9e22,transparent 30%),
         radial-gradient(circle at 80% 70%,#a855f722,transparent 30%);
+    z-index:0;
 }
 
-/* Floating hearts */
+
+/* =========================
+   FLOATING HEARTS
+========================= */
 
 .heart{
     position:fixed;
     bottom:-50px;
-    z-index:0;
+    z-index:1;
     font-size:20px;
     animation:float 9s linear infinite;
     opacity:.7;
+    pointer-events:none;
 }
 
 .h1{left:8%;animation-delay:0s}
@@ -176,6 +214,7 @@ body:before{
     }
 }
 
+
 /* =========================
    SECTIONS
 ========================= */
@@ -185,7 +224,7 @@ section{
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:40px 20px;
+    padding:50px 20px;
     position:relative;
     z-index:2;
     text-align:center;
@@ -193,13 +232,14 @@ section{
 
 .card{
     width:min(900px,100%);
-    padding:50px 25px;
+    padding:55px 25px;
     border-radius:35px;
     background:#ffffff0b;
     border:1px solid #ffffff20;
     backdrop-filter:blur(18px);
     box-shadow:0 25px 80px #00000066;
 }
+
 
 /* =========================
    HERO
@@ -220,7 +260,9 @@ section{
 .hero h2{
     font-size:clamp(45px,12vw,95px);
     margin-bottom:25px;
-    text-shadow:0 0 35px #ff6f9e66;
+    text-shadow:
+        0 0 20px #ff6f9e66,
+        0 0 60px #ff6f9e33;
 }
 
 .hero p{
@@ -240,31 +282,78 @@ section{
     padding:14px 27px;
     border-radius:30px;
     background:#ffffff0c;
+    transition:.4s;
 }
 
+.scroll:hover{
+    background:#ff6f9e22;
+    transform:translateY(-4px);
+}
+
+
 /* =========================
-   MESSAGE
+   SPECIAL MESSAGE
 ========================= */
+
+.special{
+    background:
+        radial-gradient(circle at center,#35152f33,transparent 60%);
+}
 
 .message-icon{
     font-size:65px;
     margin-bottom:20px;
+    animation:softBeat 2s infinite;
+}
+
+@keyframes softBeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.12)}
 }
 
 .card h2{
     font-size:40px;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 .message{
     font-size:20px;
-    line-height:1.9;
+    line-height:2;
     color:#ffe5ee;
 }
 
 .pink{
     color:#ffabc9;
+    text-shadow:0 0 12px #ff6f9e55;
 }
+
+
+/* =========================
+   ANEES MESSAGE
+========================= */
+
+.anees-message{
+    margin-top:30px;
+    padding:28px 22px;
+    border-left:2px solid #ff8fb5;
+    border-right:2px solid #ff8fb5;
+    background:#ff6f9e08;
+    border-radius:20px;
+}
+
+.anees-message p{
+    font-size:19px;
+    line-height:2;
+    color:#ffeaf2;
+}
+
+.from-anees{
+    margin-top:25px;
+    color:#ffabc9;
+    font-size:17px;
+    letter-spacing:1px;
+}
+
 
 /* =========================
    CHOCOLATE + ICE CREAM
@@ -294,18 +383,31 @@ section{
 }
 
 .treat{
-    padding:35px 20px;
+    padding:38px 20px;
     border-radius:30px;
-    background:#ffffff0b;
+    background:linear-gradient(145deg,#ffffff0d,#ffffff05);
     border:1px solid #ffffff20;
     transition:.5s;
     position:relative;
     overflow:hidden;
 }
 
+.treat:before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:#ff78aa22;
+    filter:blur(25px);
+    top:-50px;
+    right:-40px;
+}
+
 .treat:hover{
-    transform:translateY(-10px) scale(1.02);
+    transform:translateY(-12px) scale(1.03);
     background:#ffffff15;
+    box-shadow:0 20px 50px #ff5c9130;
 }
 
 .treat-icon{
@@ -313,6 +415,7 @@ section{
     display:block;
     margin-bottom:15px;
     animation:bounce 2.5s ease-in-out infinite;
+    filter:drop-shadow(0 10px 15px #00000055);
 }
 
 .treat:nth-child(2) .treat-icon{
@@ -320,8 +423,8 @@ section{
 }
 
 @keyframes bounce{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-10px) rotate(3deg)}
+    0%,100%{transform:translateY(0) rotate(0)}
+    50%{transform:translateY(-13px) rotate(4deg)}
 }
 
 .treat h3{
@@ -331,11 +434,17 @@ section{
 
 .treat p{
     color:#ffe5ee;
-    line-height:1.6;
+    line-height:1.7;
     font-size:15px;
 }
 
-.treat-button{
+
+/* =========================
+   LITTLE SURPRISE
+========================= */
+
+.treat-button,
+.last-button{
     margin-top:35px;
     border:none;
     padding:16px 30px;
@@ -344,29 +453,56 @@ section{
     font-size:16px;
     cursor:pointer;
     background:linear-gradient(135deg,#ff5c91,#a855f7);
-    box-shadow:0 10px 35px #ff5c9150;
+    box-shadow:
+        0 10px 35px #ff5c9150,
+        0 0 25px #a855f733;
+    transition:.4s;
+}
+
+.treat-button:hover,
+.last-button:hover{
+    transform:translateY(-5px) scale(1.04);
+    box-shadow:0 15px 45px #ff5c9170;
 }
 
 #surprise{
-    margin-top:20px;
-    min-height:25px;
+    margin-top:22px;
+    min-height:30px;
     color:#ffc1d7;
     font-size:18px;
+    animation:surpriseIn .5s ease;
 }
+
+@keyframes surpriseIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
 
 /* =========================
    FINAL
 ========================= */
 
+.final{
+    min-height:100vh;
+}
+
 .final h2{
     font-size:clamp(40px,9vw,75px);
+    text-shadow:0 0 30px #ff6f9e55;
 }
 
 .final p{
     max-width:650px;
     margin:20px auto;
     font-size:20px;
-    line-height:1.8;
+    line-height:1.9;
     color:#ffe5ee;
 }
 
@@ -375,6 +511,64 @@ section{
     color:#ffabc9;
     font-size:18px;
 }
+
+
+/* =========================
+   LAST SURPRISE POPUP
+========================= */
+
+#lastSurprise{
+    display:none;
+    margin-top:30px;
+    animation:lastReveal 1s ease forwards;
+}
+
+@keyframes lastReveal{
+    from{
+        opacity:0;
+        transform:scale(.7) translateY(20px);
+        filter:blur(8px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+        filter:blur(0);
+    }
+}
+
+.last-box{
+    padding:35px 20px;
+    border-radius:30px;
+    background:
+        radial-gradient(circle at center,#ff6f9e20,transparent 65%),
+        #ffffff08;
+    border:1px solid #ffabc933;
+    box-shadow:0 0 60px #ff5c9130;
+}
+
+.last-box .big-heart{
+    font-size:70px;
+    animation:heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat{
+    0%,100%{transform:scale(1)}
+    25%{transform:scale(1.15)}
+    40%{transform:scale(1)}
+    60%{transform:scale(1.12)}
+}
+
+.last-box h3{
+    font-size:32px;
+    margin:20px 0;
+    color:#ffc1d7;
+}
+
+.last-box p{
+    font-size:18px;
+    line-height:1.9;
+}
+
 
 /* =========================
    MOBILE
@@ -410,20 +604,31 @@ section{
     .card h2{
         font-size:32px;
     }
+
+    .message{
+        font-size:17px;
+    }
+
+    .anees-message p{
+        font-size:17px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- CINEMATIC OPENING -->
+
+<!-- =========================
+     CINEMATIC OPENING
+========================= -->
 
 <div class="intro">
 
     <div class="intro-content">
 
         <div class="intro-small">
-            A little surprise for
+            A little surprise from Anees
         </div>
 
         <h1>Kuchu Puchu</h1>
@@ -435,7 +640,11 @@ section{
         <div class="intro-line"></div>
 
         <div class="intro-note">
-            Because you deserve a little happiness ✨
+            For the person who deserves a little extra happiness ✨
+        </div>
+
+        <div class="intro-from">
+            — From Anees, with care 💗
         </div>
 
     </div>
@@ -452,7 +661,9 @@ section{
 <div class="heart h5">💗</div>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
@@ -477,9 +688,11 @@ section{
 </section>
 
 
-<!-- MESSAGE -->
+<!-- =========================
+     SPECIAL MESSAGE
+========================= -->
 
-<section id="message">
+<section id="message" class="special">
 
     <div class="card">
 
@@ -487,33 +700,60 @@ section{
             🥺💗
         </div>
 
-        <h2>Ek baat yaad rakhna...</h2>
+        <h2>Ek baat Anees ki taraf se...</h2>
 
-        <p class="message">
+        <div class="anees-message">
 
-            Tum <span class="pink">dil ki bohat achi</span> ho,
-            bohat <span class="pink">pyari</span> ho
-            aur bohat <span class="pink">cute</span> bhi ho. 🥰
+            <p>
 
-            <br><br>
+                Mujhe pata hai kabhi kabhi aapke
+                <span class="pink">mood swings</span> hote hain. 🌷
 
-            Isliye agar kabhi mood off ho,
-            to khud par thoda sa gentle rehna.
-            Har din perfect hona zaroori nahi.
+                <br><br>
 
-            <br><br>
+                Mujhe ye bhi pata hai ke aap meri
+                <span class="pink">care karti ho</span>,
+                meri <span class="pink">fikr karti ho</span>...
+                bas shayad har baar bata nahi paati.
 
-            Bas aaj ke liye...
-            ek choti si smile kar dena. 🌸
+                <br><br>
 
-        </p>
+                Shayad aap thoda sa
+                <span class="pink">darti ho</span>,
+                ya apni feelings ko words mein nahi la paati...
+
+                <br><br>
+
+                But don't worry...
+
+                <br><br>
+
+                <span class="pink">
+                    Main hamesha aapke saath hoon. 💗
+                </span>
+
+                <br><br>
+
+                Chahe mood acha ho ya off,
+                baat karne ka mann ho ya bas chup rehna ho...
+                bas yaad rakhna ke aap akeli nahi ho. 🌸
+
+            </p>
+
+            <div class="from-anees">
+                — Anees 💗
+            </div>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- CHOCOLATE + ICE CREAM -->
+<!-- =========================
+     MOOD KIT
+========================= -->
 
 <section class="treat-section">
 
@@ -557,9 +797,10 @@ section{
                 <h3>Ice Cream</h3>
 
                 <p>
-                    Because Kuchu Puchu ko ice cream pasand hai. 💕
-                    Ek scoop lo aur duniya ko
-                    thodi der ignore karo. 😌
+                    Because Kuchu Puchu ko
+                    ice cream pasand hai. 💕
+                    Ek scoop sweetness...
+                    aur thoda sa sukoon. 😌
                 </p>
 
             </div>
@@ -578,7 +819,9 @@ section{
 </section>
 
 
-<!-- FINAL -->
+<!-- =========================
+     FINAL
+========================= -->
 
 <section class="final">
 
@@ -605,9 +848,59 @@ section{
             <br><br>
 
             Tumhari happiness important hai.
-            Always take care of that beautiful heart of yours. 🌸
+            Apne us pyare se dil ka khayal rakhna. 🌸
 
         </p>
+
+        <button class="last-button" onclick="lastSurprise()">
+            💗 One Last Surprise ✨
+        </button>
+
+        <div id="lastSurprise">
+
+            <div class="last-box">
+
+                <div class="big-heart">
+                    💗
+                </div>
+
+                <h3>Kuchu Puchu...</h3>
+
+                <p>
+
+                    Agar tum ye message yahan tak padh rahi ho,
+                    to bas ek kaam karna...
+
+                    <br><br>
+
+                    <span class="pink">
+                        Ek choti si smile kar dena. 🥰
+                    </span>
+
+                    <br><br>
+
+                    Aur haan...
+
+                    <br>
+
+                    Chahe din kitna bhi difficult ho,
+                    ya mood kitna bhi off ho,
+
+                    <br><br>
+
+                    <span class="pink">
+                        Anees hamesha tumhare saath hai. 💗
+                    </span>
+
+                    <br><br>
+
+                    🍫 + 🍦 + 💗 = Kuchu Puchu ka Smile Formula ✨
+
+                </p>
+
+            </div>
+
+        </div>
 
         <div class="signature">
             Made with lots of care for my Kuchu Puchu 💗
@@ -620,24 +913,64 @@ section{
 
 <script>
 
+/* =========================
+   LITTLE SURPRISE
+========================= */
+
 function surprise(){
 
     const messages = [
+
         "🍫 Chocolate delivered! One virtual hug included. 🤗💗",
+
         "🍦 Ice cream unlocked! Mood +10 😋",
+
         "💗 Kuchu Puchu ke liye ek extra smile!",
+
         "🌷 Bad mood ko thoda sa break dete hain.",
-        "🥰 Bas ek smile... please?"
+
+        "🥰 Bas ek smile... please?",
+
+        "🍫🍦 Emergency sweetness activated! 💗"
+
     ];
 
     const random =
         messages[Math.floor(Math.random()*messages.length)];
 
-    document.getElementById("surprise").innerHTML = random;
+    const box = document.getElementById("surprise");
+
+    box.style.animation="none";
+    void box.offsetWidth;
+    box.style.animation="surpriseIn .5s ease";
+
+    box.innerHTML = random;
+}
+
+
+/* =========================
+   LAST SURPRISE
+========================= */
+
+function lastSurprise(){
+
+    const surpriseBox =
+        document.getElementById("lastSurprise");
+
+    surpriseBox.style.display="block";
+
+    setTimeout(() => {
+
+        surpriseBox.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    },100);
 
 }
 
 </script>
 
 </body>
-  </html>
+                            </html>
